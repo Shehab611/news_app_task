@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:news_app_task/core/components/custom_components/custom_snack_bar.dart';
 import 'package:news_app_task/core/utils/app_constants/app_strings.dart';
 
 part '../utils/api_utils/api_endpoints.dart';

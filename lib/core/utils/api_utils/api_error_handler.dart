@@ -47,20 +47,20 @@ abstract final class ApiErrorHandler {
 }
 
 abstract final class ApiChecker {
-  static void checkApi(ApiResponse apiResponse, BuildContext context) {
+  static String checkApi(ApiResponse apiResponse, BuildContext context) {
     if (apiResponse.error is String) {
       String errorResponse = apiResponse.error;
-      showCustomSnackBar(
-          AppLocalizations.of(context).translate(errorResponse), context);
+      return AppLocalizations.of(context).translate(errorResponse);
     } else if (apiResponse.error is ErrorResponse) {
       ErrorResponse errorResponse = apiResponse.error as ErrorResponse;
       String translatedText = '';
       switch (errorResponse.message) {}
-      showCustomSnackBar(translatedText, context);
+      return translatedText;
     } else {
       if (kDebugMode) {
         print('Error badResponse can not handled');
       }
+      return 'Error badResponse can not handled';
     }
   }
 }
