@@ -1,13 +1,13 @@
 part of '../../usable_functions/api_service_helper.dart';
 
-class ApiResponse {
+final class ApiResponse {
   final Response? response;
   final int? statusCode;
   final dynamic error;
 
-  ApiResponse(this.response, this.error, this.statusCode);
+  const ApiResponse(this.response, this.error, this.statusCode);
 
-  ApiResponse.withError(dynamic errorValue, [int? statusC])
+  const ApiResponse.withError(dynamic errorValue, [int? statusC])
       : response = null,
         statusCode = statusC,
         error = errorValue;
