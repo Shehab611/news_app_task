@@ -21,9 +21,11 @@ abstract final class AppConstants {
 
   //#endregion
 
+  static const String _apiKey = 'ecd4a12103ae4defb595760a29895765';
+
   //#endregion
 
-  //#region getters
+  //#region Getters
   static Duration get connectionTimeOut => _connectionTimeOut;
 
   //#region Localization Getters
@@ -35,6 +37,6 @@ abstract final class AppConstants {
 
   //#endregion
 
-  //#endregion
-
+  static String get apiKey => _apiKey;
+//#endregion
 }

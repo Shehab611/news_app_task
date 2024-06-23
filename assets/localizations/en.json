@@ -9,5 +9,15 @@
   "bad_certificates_error": "Connection to API server failed due to Bad Certificate",
   "en": "English",
   "ar": "Arabic",
-  "no_data": "No Data is Found"
+  "no_data": "No Data is Found",
+  "apiKeyDisabledMessage": "Your API key has been disabled",
+  "apiKeyExhaustedMessage": "Your API key has no more requests available",
+  "apiKeyInvalidMessage": "Your API key hasn't been entered correctly. Double check it and try again.",
+  "apiKeyMissingMessage": "Your API key is missing from the request. Append it to the request with one of these methods.",
+  "parameterInvalidMessage": "You've included a parameter in your request which is currently not supported",
+  "parameterMissingMessage": "Required parameters are missing from the request and it cannot be completed",
+  "rateLimitedMessage": "You have been rate limited. Back off for a while before trying the request again",
+  "sourcesTooManyMessage": "You have requested too many sources in a single request. Try splitting the request into 2 smaller requests",
+  "sourceDoesNotExistMessage": "You have requested a source which does not exist",
+  "unexpectedErrorMessage": "This shouldn't happen, and if it does then it's our fault, not yours. Try the request again shortly"
 }

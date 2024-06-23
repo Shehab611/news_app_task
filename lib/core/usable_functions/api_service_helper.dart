@@ -29,6 +29,7 @@ class DioClient {
       ..httpClientAdapter
       ..options.headers = {
         'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization':AppConstants.apiKey,
         'Accept': 'application/json',
       };
     _dio.interceptors.add(_loggingInterceptor);

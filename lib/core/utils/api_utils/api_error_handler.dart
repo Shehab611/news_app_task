@@ -54,7 +54,38 @@ abstract final class ApiChecker {
     } else if (apiResponse.error is ErrorResponse) {
       ErrorResponse errorResponse = apiResponse.error as ErrorResponse;
       String translatedText = '';
-      switch (errorResponse.message) {}
+      switch (errorResponse.errorCode) {
+        case AppStrings.apiKeyDisabled:
+          translatedText = AppLocalizations.of(context)
+              .translate(AppStrings.apiKeyDisabledMessage);
+        case AppStrings.apiKeyExhausted:
+          translatedText = AppLocalizations.of(context)
+              .translate(AppStrings.apiKeyExhaustedMessage);
+        case AppStrings.apiKeyInvalid:
+          translatedText = AppLocalizations.of(context)
+              .translate(AppStrings.apiKeyInvalidMessage);
+        case AppStrings.apiKeyMissing:
+          translatedText = AppLocalizations.of(context)
+              .translate(AppStrings.apiKeyMissingMessage);
+        case AppStrings.parameterInvalid:
+          translatedText = AppLocalizations.of(context)
+              .translate(AppStrings.parameterInvalidMessage);
+        case AppStrings.parameterMissing:
+          translatedText = AppLocalizations.of(context)
+              .translate(AppStrings.parameterMissingMessage);
+        case AppStrings.rateLimited:
+          translatedText = AppLocalizations.of(context)
+              .translate(AppStrings.rateLimitedMessage);
+        case AppStrings.sourcesTooMany:
+          translatedText = AppLocalizations.of(context)
+              .translate(AppStrings.sourcesTooManyMessage);
+        case AppStrings.sourceDoesNotExist:
+          translatedText = AppLocalizations.of(context)
+              .translate(AppStrings.sourceDoesNotExistMessage);
+        case AppStrings.unexpectedErrorApi:
+          translatedText = AppLocalizations.of(context)
+              .translate(AppStrings.unexpectedErrorApiMessage);
+      }
       return translatedText;
     } else {
       if (kDebugMode) {
