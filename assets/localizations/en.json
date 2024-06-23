@@ -1,0 +1,13 @@
+{
+  "request_cancelled": "Request to API server was cancelled",
+  "connection_time_out": "Connection timeout with API server",
+  "receive_time_out": "Receive timeout with API server",
+  "send_time_out": "Send timeout with API server",
+  "internet_connection_error": "Connection to API server failed due to internet connection",
+  "unexpected_error": "Unexpected error occurred",
+  "unknown_error": "Connection to API server failed due to Unknown Error",
+  "bad_certificates_error": "Connection to API server failed due to Bad Certificate",
+  "en": "English",
+  "ar": "Arabic",
+  "no_data": "No Data is Found"
+}
