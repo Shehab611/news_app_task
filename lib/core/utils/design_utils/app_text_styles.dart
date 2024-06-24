@@ -11,9 +11,7 @@ abstract final class AppTextStyles {
       fontWeight: FontWeight.w400, fontSize: AppSizes.fontSizeExtraSmall);
 
   static const TextStyle titleTextStyle = TextStyle(
-      color: Colors.white,
-      fontWeight: FontWeight.w800,
-      fontSize: AppSizes.fontSizeExtraLarge);
+      fontWeight: FontWeight.w800, fontSize: AppSizes.fontSizeExtraLarge);
 
   static const TextStyle highlightTextStyle =
       TextStyle(fontWeight: FontWeight.w600, fontSize: AppSizes.fontSizeLarge);

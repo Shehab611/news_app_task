@@ -25,9 +25,30 @@ abstract final class AppThemeData {
       titleTextStyle: AppTextStyles.appBarTextStyle);
 
   static ThemeData lightTheme = ThemeData(
-      brightness: Brightness.light,
-      listTileTheme: listTileThemeData,
-      appBarTheme: appBarTheme);
+    brightness: Brightness.light,
+    primaryColor: AppColors.primaryColor,
+      colorScheme: ColorScheme.fromSeed(seedColor: AppColors.cardColor),
+    scaffoldBackgroundColor: Colors.white,
+    listTileTheme:
+        listTileThemeData.copyWith(textColor: AppColors.primaryColor),
+    appBarTheme: appBarTheme.copyWith(color: Colors.white,
+        titleTextStyle: appBarTheme.titleTextStyle
+            ?.copyWith(color: AppColors.primaryColor)),
+    textTheme: const TextTheme(
+      bodyLarge: TextStyle(
+        color: AppColors.primaryColor,
+      ),
+      bodyMedium: TextStyle(
+        color: AppColors.primaryColor,
+      ),
+      titleMedium: TextStyle(
+        color: AppColors.primaryColor,
+      ),
+      titleSmall: TextStyle(
+        color: AppColors.primaryColor,
+      ),
+    ),
+  );
 
   static ThemeData darkTheme = ThemeData(
       brightness: Brightness.dark,

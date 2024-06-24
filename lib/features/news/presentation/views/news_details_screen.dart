@@ -31,40 +31,35 @@ class NewsDetailsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Stack(
-                alignment: Alignment.bottomCenter,
-                children: [
-                  ClipRRect(
-                    borderRadius:
-                        BorderRadius.circular(AppSizes.paddingSizeDefault),
-                    child: Image.network(
-                      article.urlToImage,
-                      width: double.infinity,
-                      height: size.height * 0.25,
-                      fit: BoxFit.fitWidth,
-                      errorBuilder: (context, error, stackTrace) {
-                        return const Icon(
-                          Icons.error,
-                          color: Colors.red,
-                        );
-                      },
-                      loadingBuilder: (context, child, loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        return const CustomLoader();
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: AppSizes.paddingSizeDefault),
-                    child: Center(
-                        child: Text(
+              ClipRRect(
+                borderRadius:
+                    BorderRadius.circular(AppSizes.paddingSizeDefault),
+                child: Image.network(
+                  article.urlToImage,
+                  width: double.infinity,
+                  height: size.height * 0.25,
+                  fit: BoxFit.fitWidth,
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(
+                      Icons.error,
+                      color: Colors.red,
+                    );
+                  },
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return const CustomLoader();
+                  },
+                ),
+              ),
+              Padding(
+                padding:
+                const EdgeInsets.only(top: AppSizes.paddingSizeDefault),
+                child: Center(
+                    child: Text(
                       article.title,
                       textAlign: TextAlign.center,
                       style: AppTextStyles.titleTextStyle,
                     )),
-                  ),
-                ],
               ),
               if (article.author.isNotEmpty)
                 Padding(
