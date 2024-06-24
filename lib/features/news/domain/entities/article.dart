@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:news_app_task/features/news/domain/entities/article_source.dart';
+
+part 'article_source.dart';
 
 abstract class Article extends Equatable {
   final ArticleSource source;

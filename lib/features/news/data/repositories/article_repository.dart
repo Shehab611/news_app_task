@@ -4,10 +4,10 @@ import 'package:news_app_task/features/news/data/sources/article_remote_data_sou
 import 'package:news_app_task/features/news/domain/entities/article.dart';
 import 'package:news_app_task/features/news/domain/repositories/article_repository_interface.dart';
 
-final class ArticleRepository implements ArticlesRepositoryInterface {
+final class ArticlesRepositoryImpl implements ArticlesRepositoryInterface {
   final ArticleRemoteDataSourceInterface _dataSource;
 
-  const ArticleRepository(this._dataSource);
+  const ArticlesRepositoryImpl(this._dataSource);
 
   @override
   Future<DataResponse<List<Article>>> getBusinessArticles(

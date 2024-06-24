@@ -1,4 +1,4 @@
-import 'package:news_app_task/features/news/domain/entities/article_source.dart';
+part of 'article_model.dart';
 
 final class ArticleSourceModel extends ArticleSource {
   const ArticleSourceModel({required super.id, required super.name});

@@ -2,6 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:news_app_task/core/usable_functions/api_service_helper.dart';
 import 'package:news_app_task/core/utils/app_constants/app_strings.dart';
+import 'package:news_app_task/features/news/data/repositories/article_repository.dart';
+import 'package:news_app_task/features/news/data/sources/article_remote_data_source.dart';
+import 'package:news_app_task/features/news/domain/repositories/article_repository_interface.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final sl = GetIt.instance;
@@ -15,7 +18,13 @@ Future<void> initServicesLocator() async {
   //#endregion
 
   //#region Repos
+  sl.registerLazySingleton<ArticlesRepositoryInterface>(
+          () => ArticlesRepositoryImpl(sl.get()));
+  //#endregion
 
+  //#region Data Sources
+  sl.registerLazySingleton<ArticleRemoteDataSourceInterface>(
+          () => ArticleRemoteDataSourceImpl(sl.get()));
   //#endregion
 
   //#region External

@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of 'article.dart';
 
 abstract class ArticleSource extends Equatable {
   final String id;

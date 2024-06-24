@@ -1,5 +1,6 @@
-import 'package:news_app_task/features/news/data/models/article_source_model.dart';
 import 'package:news_app_task/features/news/domain/entities/article.dart';
+
+part 'article_source_model.dart';
 
 final class ArticleModel extends Article {
   const ArticleModel(
