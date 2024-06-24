@@ -10,7 +10,7 @@ final class GetBusinessArticlesImpl
   const GetBusinessArticlesImpl(this._articlesRepository);
 
   @override
-  Future<DataResponse<List<Article>>> call(int pageNum) async {
+  Future<DataResponse<List<Article>>> call([int pageNum=1]) async {
     return await _articlesRepository.getBusinessArticles(pageNum);
   }
 }
