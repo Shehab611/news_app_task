@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:news_app_task/core/usable_functions/api_service_helper.dart';
 import 'package:news_app_task/core/utils/app_constants/app_strings.dart';
+import 'package:news_app_task/core/utils/design_utils/app_theme.dart';
 import 'package:news_app_task/features/news/data/repositories/article_repository.dart';
 import 'package:news_app_task/features/news/data/sources/article_remote_data_source.dart';
 import 'package:news_app_task/features/news/domain/repositories/article_repository_interface.dart';
@@ -15,6 +16,7 @@ Future<void> initServicesLocator() async {
   sl.registerLazySingleton<DioClient>(() =>
       DioClient(ApiEndPoints.baseUrl, sl.get(), loggingInterceptor: sl.get()));
   sl.registerLazySingleton<AppLanguage>(() => AppLanguage());
+  sl.registerLazySingleton<AppTheme>(() => AppTheme());
   //#endregion
 
   //#region Repos

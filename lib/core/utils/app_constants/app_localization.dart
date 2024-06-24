@@ -1,6 +1,6 @@
 part of 'app_strings.dart';
 
-class AppLocalizations {
+final class AppLocalizations {
   final Locale locale;
 
   AppLocalizations({required this.locale});
@@ -38,7 +38,7 @@ class AppLocalizations {
   }
 }
 
-class _AppLocalizationsDelegate
+final class _AppLocalizationsDelegate
     extends LocalizationsDelegate<AppLocalizations> {
   // This delegate instance will never change (it doesn't even have fields!)
   // It can provide a constant constructor.
@@ -62,7 +62,7 @@ class _AppLocalizationsDelegate
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
-class AppLanguage extends ChangeNotifier {
+final class AppLanguage extends ChangeNotifier {
   Locale _appLocale =
       AppConstants.supportedLocales[AppConstants.defaultLanguage]!;
 
