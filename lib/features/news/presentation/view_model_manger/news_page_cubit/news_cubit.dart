@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app_task/core/service_locator.dart';
 import 'package:news_app_task/core/utils/app_constants/app_strings.dart';
+import 'package:news_app_task/core/utils/design_utils/app_theme.dart';
 import 'package:news_app_task/features/news/domain/entities/article.dart';
 import 'package:news_app_task/features/news/domain/use_cases/get_business_articles.dart';
 
@@ -72,7 +73,25 @@ class NewsCubit extends Cubit<NewsState> {
     } else {
       appLang.changeLanguage(const Locale('en'));
     }
-    emit(const NewsChangeLanguageState());
+  }
+
+  void changeTheme() {
+    var appTheme = sl<AppTheme>();
+    if(appTheme.themeMode == ThemeMode.system){
+      var brightness = WidgetsBinding.instance.platformDispatcher.platformBrightness;
+      bool isDarkMode = brightness == Brightness.dark;
+      if(isDarkMode){
+        appTheme.changeTheme(ThemeMode.light);
+      }else{
+        appTheme.changeTheme(ThemeMode.dark);
+      }
+    }
+    else if(appTheme.themeMode == ThemeMode.light){
+      appTheme.changeTheme(ThemeMode.dark);
+    }
+    else{
+      appTheme.changeTheme(ThemeMode.light);
+    }
   }
 //#endregion
 }

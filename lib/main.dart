@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
                     debugShowCheckedModeBanner: false,
                     routes: AppRouter.routes,
                     theme: AppThemeData.lightTheme,
-                    //darkTheme: AppThemeData.darkTheme,
+                    darkTheme: AppThemeData.darkTheme,
                     themeMode: appTheme.themeMode,
                     initialRoute: AppPathName.kNewsScreen,
                     locale: appLanguage.appLocal,

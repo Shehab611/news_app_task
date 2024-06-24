@@ -19,7 +19,9 @@ class NewsScreen extends StatelessWidget {
             Text(AppLocalizations.of(context).translate(AppStrings.newsScreen)),
         actions: [
           IconButton(
-              onPressed: () {}, icon: const Icon(Icons.light_mode_outlined)),
+              onPressed: () {
+                BlocProvider.of<NewsCubit>(context).changeTheme();
+              }, icon: const Icon(Icons.light_mode_outlined)),
           IconButton(
               onPressed: () {
                 BlocProvider.of<NewsCubit>(context).changeLocale();
