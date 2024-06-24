@@ -14,6 +14,7 @@ abstract final class AppStrings {
   static const String noData = 'no_data';
   static const String en = 'en';
   static const String ar = 'ar';
+  static const String newsScreen = 'news_screen';
 
   //#endregion
 

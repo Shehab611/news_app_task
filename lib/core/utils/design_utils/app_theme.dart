@@ -1,17 +1,24 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'app_colors.dart';
+
 part 'app_sizes.dart';
+
 part 'app_text_styles.dart';
-part 'app_text_scale.dart';
 
 abstract final class AppThemeData {
-  static ThemeData defaultTheme = ThemeData();
+  static ThemeData defaultTheme = ThemeData(
+      appBarTheme: const AppBarTheme(
+          centerTitle: true,
+          elevation: 0,
+          actionsIconTheme: IconThemeData(
+            color: AppColors.defaultColor,
+            applyTextScaling: true,
+            size: 20
+          ),
+          titleTextStyle: AppTextStyles.appBarTextStyle));
 }
-
 
 final class AppTheme extends ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.system; // Default to system theme
@@ -21,7 +28,7 @@ final class AppTheme extends ChangeNotifier {
   Future<void> fetchTheme() async {
     var prefs = await SharedPreferences.getInstance();
     final themeString = prefs.getString('theme_mode');
-    if(themeString == null) {
+    if (themeString == null) {
       _themeMode = ThemeMode.system; // Default if no preference is stored
       await prefs.setString('theme_mode', 'system');
     } else {
