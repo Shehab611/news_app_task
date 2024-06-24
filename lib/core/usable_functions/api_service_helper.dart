@@ -11,6 +11,8 @@ part '../utils/api_utils/api_error_response.dart';
 
 part '../utils/api_utils/api_response.dart';
 
+part '../utils/api_utils/api_response_handler.dart';
+
 part 'logging_interceptor.dart';
 
 class DioClient {

@@ -12,21 +12,22 @@ final sl = GetIt.instance;
 
 Future<void> initServicesLocator() async {
   //#region Core
-
   sl.registerLazySingleton<DioClient>(() =>
       DioClient(ApiEndPoints.baseUrl, sl.get(), loggingInterceptor: sl.get()));
   sl.registerLazySingleton<AppLanguage>(() => AppLanguage());
   sl.registerLazySingleton<AppTheme>(() => AppTheme());
+  sl.registerLazySingleton<ApiResponseHandler>(
+      () => ApiResponseHandler(sl.get()));
   //#endregion
 
   //#region Repos
   sl.registerLazySingleton<ArticlesRepositoryInterface>(
-          () => ArticlesRepositoryImpl(sl.get()));
+      () => ArticlesRepositoryImpl(sl.get()));
   //#endregion
 
   //#region Data Sources
   sl.registerLazySingleton<ArticleRemoteDataSourceInterface>(
-          () => ArticleRemoteDataSourceImpl(sl.get()));
+      () => ArticleRemoteDataSourceImpl(sl.get()));
   //#endregion
 
   //#region External

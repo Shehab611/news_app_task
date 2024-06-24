@@ -47,12 +47,11 @@ abstract final class ApiErrorHandler {
 }
 
 abstract final class ApiChecker {
-  static String checkApi(ApiResponse apiResponse) {
-    if (apiResponse.error is String) {
-      String errorResponse = apiResponse.error;
-      return errorResponse;
-    } else if (apiResponse.error is ErrorResponse) {
-      ErrorResponse errorResponse = apiResponse.error as ErrorResponse;
+  static String checkApi(dynamic error) {
+    if (error is String) {
+      return error;
+    } else if (error is ErrorResponse) {
+      ErrorResponse errorResponse = error;
       switch (errorResponse.errorCode) {
         case AppStrings.apiKeyDisabled:
           return AppStrings.apiKeyDisabledMessage;

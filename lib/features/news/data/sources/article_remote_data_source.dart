@@ -7,25 +7,11 @@ abstract interface class ArticleRemoteDataSourceInterface {
 
 final class ArticleRemoteDataSourceImpl
     implements ArticleRemoteDataSourceInterface {
-  final DioClient _dioClient;
+  final ApiResponseHandler _apiResponseHandler;
 
-  const ArticleRemoteDataSourceImpl(this._dioClient);
+  const ArticleRemoteDataSourceImpl(this._apiResponseHandler);
 
   //#region Private Methods
-  Future<ApiResponse> _handleApiResponse(
-      String endPoint, Map<String, dynamic> query) async {
-    ApiResponse apiResponse;
-    try {
-      StackTrace stackTrace = StackTrace.current;
-      final response =
-          await _dioClient.get(endPoint, stackTrace, queryParameters: query);
-      apiResponse = ApiResponse.withSuccess(response);
-    } catch (e) {
-      apiResponse = ApiResponse.withError(ApiErrorHandler.getMessage(e));
-    }
-    return apiResponse;
-  }
-
   List<ArticleModel> _getArticles(ApiResponse apiResponse) {
     final List<ArticleModel> articles = [];
     for (var json in apiResponse.response!.data['articles']) {
@@ -38,7 +24,7 @@ final class ArticleRemoteDataSourceImpl
 
   @override
   Future<List<ArticleModel>> getBusinessArticles(int pageNum) async {
-    ApiResponse apiResponse = await _handleApiResponse(
+    ApiResponse apiResponse = await _apiResponseHandler.handleGetApiResponse(
         ApiEndPoints.everyThing, {
       'q': 'business',
       'sortBy': 'publishedAt',
@@ -48,8 +34,7 @@ final class ArticleRemoteDataSourceImpl
     if (apiResponse.statusCode == 200) {
       return _getArticles(apiResponse);
     } else {
-      String exceptionMessage = ApiChecker.checkApi(apiResponse);
-      throw Exception(exceptionMessage);
+      throw Exception(apiResponse.error);
     }
   }
 }
