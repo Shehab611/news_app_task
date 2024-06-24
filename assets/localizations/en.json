@@ -20,5 +20,9 @@
   "sourcesTooManyMessage": "You have requested too many sources in a single request. Try splitting the request into 2 smaller requests",
   "sourceDoesNotExistMessage": "You have requested a source which does not exist",
   "unexpectedErrorMessage": "This shouldn't happen, and if it does then it's our fault, not yours. Try the request again shortly",
-  "news_screen": "News Screen"
+  "news_screen": "News Screen",
+  "article": "The Article",
+  "by": "By",
+  "at": "At",
+  "source": "Source"
 }

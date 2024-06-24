@@ -6,11 +6,11 @@ class ArticleWidget extends StatelessWidget {
   const ArticleWidget(
       {super.key,
       required this.title,
-      required this.publishDate,
+      required this.source,
       required this.imageLink,
       this.onTap});
 
-  final String title, publishDate, imageLink;
+  final String title, source, imageLink;
   final void Function()? onTap;
 
   @override
@@ -48,7 +48,7 @@ class ArticleWidget extends StatelessWidget {
           title,
         ),
         subtitle: Text(
-          publishDate,
+          source,
         ),
       ),
     );

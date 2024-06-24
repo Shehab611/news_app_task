@@ -50,7 +50,7 @@ class NewsScreen extends StatelessWidget {
               if (index < cubit.articles.length) {
                 return ArticleWidget(
                   title: cubit.articles[index].title,
-                  publishDate: cubit.articles[index].publishedAt,
+                  source: cubit.articles[index].source.name,
                   imageLink: cubit.articles[index].urlToImage,
                   onTap: () {
                     AppNavigator.navigateToDetailsScreen(
