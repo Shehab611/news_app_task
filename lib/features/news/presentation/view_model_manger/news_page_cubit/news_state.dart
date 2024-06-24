@@ -19,8 +19,8 @@ final class NewsLoadingState extends NewsState {
 }
 
 final class NewsGetDataSuccessfullyState extends NewsState {
-  const NewsGetDataSuccessfullyState(this.articles);
-  final List<Article> articles;
+  const NewsGetDataSuccessfullyState();
+
   @override
   List<Object> get props => [];
 }

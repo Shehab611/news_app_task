@@ -16,12 +16,12 @@ final class ArticleModel extends Article {
   factory ArticleModel.fromJson(Map<String, dynamic> json) {
     return ArticleModel(
         source: ArticleSourceModel.fromJson(json['source']),
-        author: json['author'],
-        title: json['title'],
-        description: json['description'],
-        url: json['url'],
-        urlToImage: json['urlToImage'],
-        publishedAt: json['publishedAt'],
-        content: json['content']);
+        author: json['author']??'',
+        title: json['title']??'',
+        description: json['description']??'',
+        url: json['url']??'',
+        urlToImage: json['urlToImage']??'',
+        publishedAt: json['publishedAt']??'',
+        content: json['content']??'');
   }
 }

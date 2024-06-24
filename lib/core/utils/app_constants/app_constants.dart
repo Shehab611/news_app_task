@@ -21,7 +21,7 @@ abstract final class AppConstants {
 
   //#endregion
 
-  static const String _apiKey = 'ecd4a12103ae4defb595760a29895765';
+  static const String _apiKey = '255cd8e027ba4884a52e6c42099f4304';
 
   //#endregion
 
