@@ -10,9 +10,9 @@ final class ArticlesRepositoryImpl implements ArticlesRepositoryInterface {
 
   @override
   Future<DataResponse<List<Article>>> getBusinessArticles(
-      Map<String, dynamic> query) async {
+      int pageNum) async {
     try {
-      final data = await _dataSource.getBusinessArticles(query);
+      final data = await _dataSource.getBusinessArticles(pageNum);
       return DataResponse.withSuccess(data);
     } catch (e) {
       return DataResponse.withError(e.toString());

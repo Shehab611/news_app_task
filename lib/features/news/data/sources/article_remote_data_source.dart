@@ -2,7 +2,7 @@ import 'package:news_app_task/core/usable_functions/api_service_helper.dart';
 import 'package:news_app_task/features/news/data/models/article_model.dart';
 
 abstract interface class ArticleRemoteDataSourceInterface {
-  Future<List<ArticleModel>> getBusinessArticles(Map<String, dynamic> query);
+  Future<List<ArticleModel>> getBusinessArticles(int pageNum);
 }
 
 final class ArticleRemoteDataSourceImpl
@@ -37,10 +37,14 @@ final class ArticleRemoteDataSourceImpl
 //#endregion
 
   @override
-  Future<List<ArticleModel>> getBusinessArticles(
-      Map<String, dynamic> query) async {
-    ApiResponse apiResponse =
-        await _handleApiResponse(ApiEndPoints.everyThing, query);
+  Future<List<ArticleModel>> getBusinessArticles(int pageNum) async {
+    ApiResponse apiResponse = await _handleApiResponse(
+        ApiEndPoints.everyThing, {
+      'q': 'business',
+      'sortBy': 'publishedAt',
+      'pageSize': 15,
+      'page': pageNum
+    });
     if (apiResponse.statusCode == 200) {
       return _getArticles(apiResponse);
     } else {
