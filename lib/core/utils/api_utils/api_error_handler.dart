@@ -47,46 +47,36 @@ abstract final class ApiErrorHandler {
 }
 
 abstract final class ApiChecker {
-  static String checkApi(ApiResponse apiResponse, BuildContext context) {
+  static String checkApi(ApiResponse apiResponse) {
     if (apiResponse.error is String) {
       String errorResponse = apiResponse.error;
-      return AppLocalizations.of(context).translate(errorResponse);
+      return errorResponse;
     } else if (apiResponse.error is ErrorResponse) {
       ErrorResponse errorResponse = apiResponse.error as ErrorResponse;
-      String translatedText = '';
       switch (errorResponse.errorCode) {
         case AppStrings.apiKeyDisabled:
-          translatedText = AppLocalizations.of(context)
-              .translate(AppStrings.apiKeyDisabledMessage);
+          return AppStrings.apiKeyDisabledMessage;
         case AppStrings.apiKeyExhausted:
-          translatedText = AppLocalizations.of(context)
-              .translate(AppStrings.apiKeyExhaustedMessage);
+          return AppStrings.apiKeyExhaustedMessage;
         case AppStrings.apiKeyInvalid:
-          translatedText = AppLocalizations.of(context)
-              .translate(AppStrings.apiKeyInvalidMessage);
+          return AppStrings.apiKeyInvalidMessage;
         case AppStrings.apiKeyMissing:
-          translatedText = AppLocalizations.of(context)
-              .translate(AppStrings.apiKeyMissingMessage);
+          return AppStrings.apiKeyMissingMessage;
         case AppStrings.parameterInvalid:
-          translatedText = AppLocalizations.of(context)
-              .translate(AppStrings.parameterInvalidMessage);
+          return AppStrings.parameterInvalidMessage;
         case AppStrings.parameterMissing:
-          translatedText = AppLocalizations.of(context)
-              .translate(AppStrings.parameterMissingMessage);
+          return AppStrings.parameterMissingMessage;
         case AppStrings.rateLimited:
-          translatedText = AppLocalizations.of(context)
-              .translate(AppStrings.rateLimitedMessage);
+          return AppStrings.rateLimitedMessage;
         case AppStrings.sourcesTooMany:
-          translatedText = AppLocalizations.of(context)
-              .translate(AppStrings.sourcesTooManyMessage);
+          return AppStrings.sourcesTooManyMessage;
         case AppStrings.sourceDoesNotExist:
-          translatedText = AppLocalizations.of(context)
-              .translate(AppStrings.sourceDoesNotExistMessage);
+          return AppStrings.sourceDoesNotExistMessage;
         case AppStrings.unexpectedErrorApi:
-          translatedText = AppLocalizations.of(context)
-              .translate(AppStrings.unexpectedErrorApiMessage);
+          return AppStrings.unexpectedErrorApiMessage;
+        default:
+          return 'Error badResponse can not handled';
       }
-      return translatedText;
     } else {
       if (kDebugMode) {
         print('Error badResponse can not handled');

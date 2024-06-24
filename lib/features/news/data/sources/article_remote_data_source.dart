@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:news_app_task/core/usable_functions/api_service_helper.dart';
 import 'package:news_app_task/features/news/data/models/article_model.dart';
 
 abstract interface class ArticleRemoteDataSourceInterface {
-  Future<List<ArticleModel>> getBusinessArticles(
-      Map<String, dynamic> query, BuildContext context);
+  Future<List<ArticleModel>> getBusinessArticles(Map<String, dynamic> query);
 }
 
 final class ArticleRemoteDataSourceImpl
@@ -40,13 +38,13 @@ final class ArticleRemoteDataSourceImpl
 
   @override
   Future<List<ArticleModel>> getBusinessArticles(
-      Map<String, dynamic> query, BuildContext context) async {
+      Map<String, dynamic> query) async {
     ApiResponse apiResponse =
         await _handleApiResponse(ApiEndPoints.everyThing, query);
     if (apiResponse.statusCode == 200) {
       return _getArticles(apiResponse);
     } else {
-      String exceptionMessage = ApiChecker.checkApi(apiResponse, context);
+      String exceptionMessage = ApiChecker.checkApi(apiResponse);
       throw Exception(exceptionMessage);
     }
   }

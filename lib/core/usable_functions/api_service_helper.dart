@@ -1,15 +1,16 @@
 import 'dart:io';
-
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:news_app_task/core/utils/app_constants/app_strings.dart';
 
 part '../utils/api_utils/api_endpoints.dart';
+
 part '../utils/api_utils/api_error_handler.dart';
+
 part '../utils/api_utils/api_error_response.dart';
+
 part '../utils/api_utils/api_response.dart';
+
 part 'logging_interceptor.dart';
 
 class DioClient {
@@ -21,7 +22,7 @@ class DioClient {
     this._baseUrl,
     this._dio, {
     required LoggingInterceptor loggingInterceptor,
-  })  : _loggingInterceptor = loggingInterceptor {
+  }) : _loggingInterceptor = loggingInterceptor {
     _dio
       ..options.baseUrl = _baseUrl
       ..options.connectTimeout = AppConstants.connectionTimeOut
@@ -29,7 +30,7 @@ class DioClient {
       ..httpClientAdapter
       ..options.headers = {
         'Content-Type': 'application/json; charset=UTF-8',
-        'Authorization':AppConstants.apiKey,
+        'Authorization': AppConstants.apiKey,
         'Accept': 'application/json',
       };
     _dio.interceptors.add(_loggingInterceptor);
@@ -145,7 +146,6 @@ class DioClient {
       rethrow;
     }
   }
-
 
   void _getFilePath(StackTrace stackTrace) {
     String filePath = 'Unknown file';
