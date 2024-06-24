@@ -3,11 +3,11 @@ import 'package:news_app_task/core/utils/api_utils/data_response.dart';
 import 'package:news_app_task/features/news/domain/entities/article.dart';
 import 'package:news_app_task/features/news/domain/repositories/article_repository_interface.dart';
 
-final class GetBusinessArticlesImpl
+final class GetBusinessArticlesUseCase
     implements BaseUseCaseInterface<List<Article>, int> {
   final ArticlesRepositoryInterface _articlesRepository;
 
-  const GetBusinessArticlesImpl(this._articlesRepository);
+  const GetBusinessArticlesUseCase(this._articlesRepository);
 
   @override
   Future<DataResponse<List<Article>>> call([int pageNum=1]) async {

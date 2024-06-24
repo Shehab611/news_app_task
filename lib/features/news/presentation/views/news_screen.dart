@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app_task/core/components/custom_components/custom_loader.dart';
+import 'package:news_app_task/core/components/custom_components/custom_snack_bar.dart';
+import 'package:news_app_task/core/components/custom_components/no_data_screen.dart';
 import 'package:news_app_task/core/utils/app_constants/app_strings.dart';
+import 'package:news_app_task/features/news/presentation/view_model_manger/news_page_cubit/news_cubit.dart';
 import 'package:news_app_task/features/news/presentation/widgets/article_widget.dart';
 
 class NewsScreen extends StatelessWidget {
@@ -17,16 +22,31 @@ class NewsScreen extends StatelessWidget {
           IconButton(onPressed: () {}, icon: const Icon(Icons.language)),
         ],
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          return const ArticleWidget(
-            title: 'Watching The Olympics Could Actually Influence How Much You Eat',
-            publishDate: '2024-06-23T00:30:04Z',
-            imageLink:
-                'https://www.sciencealert.com/images/2024/06/friends-watching-sport-snthacks-beer.jpg',
-          );
+      body: BlocConsumer<NewsCubit, NewsState>(
+        listener: (context, state) {
+          if (state is NewsGetDataFailedState) {
+            showCustomSnackBar(
+                AppLocalizations.of(context).translate(state.error), context);
+          }
         },
-        itemCount: 5,
+        builder: (context, state) {
+          if (state is NewsGetDataSuccessfullyState) {
+            if (state.articles.isEmpty) return const NoDataScreen();
+            return ListView.builder(
+              itemBuilder: (context, index) {
+                return ArticleWidget(
+                  title: state.articles[index].title,
+                  publishDate: state.articles[index].publishedAt,
+                  imageLink: state.articles[index].urlToImage,
+                );
+              },
+              itemCount: state.articles.length,
+            );
+          } else if (state is NewsGetDataFailedState) {
+            return const NoDataScreen();
+          }
+          return const CustomLoader();
+        },
       ),
     );
   }
