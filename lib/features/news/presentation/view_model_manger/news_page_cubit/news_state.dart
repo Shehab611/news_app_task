@@ -31,3 +31,10 @@ final class NewsGetDataFailedState extends NewsState {
   @override
   List<Object> get props => [];
 }
+
+final class NewsChangeLanguageState extends NewsState {
+  const NewsChangeLanguageState();
+
+  @override
+  List<Object> get props => [];
+}

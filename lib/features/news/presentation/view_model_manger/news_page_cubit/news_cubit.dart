@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app_task/core/service_locator.dart';
+import 'package:news_app_task/core/utils/app_constants/app_strings.dart';
 import 'package:news_app_task/features/news/domain/entities/article.dart';
 import 'package:news_app_task/features/news/domain/use_cases/get_business_articles.dart';
 
@@ -61,6 +63,16 @@ class NewsCubit extends Cubit<NewsState> {
         !_loading) {
       _getBusinessArticles();
     }
+  }
+
+  void changeLocale() {
+    var appLang = sl<AppLanguage>();
+    if (appLang.appLocal == const Locale('en')) {
+      appLang.changeLanguage(const Locale('ar'));
+    } else {
+      appLang.changeLanguage(const Locale('en'));
+    }
+    emit(const NewsChangeLanguageState());
   }
 //#endregion
 }

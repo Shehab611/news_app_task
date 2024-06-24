@@ -20,7 +20,11 @@ class NewsScreen extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {}, icon: const Icon(Icons.light_mode_outlined)),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.language)),
+          IconButton(
+              onPressed: () {
+                BlocProvider.of<NewsCubit>(context).changeLocale();
+              },
+              icon: const Icon(Icons.language)),
         ],
       ),
       body: BlocConsumer<NewsCubit, NewsState>(
