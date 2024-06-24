@@ -8,47 +8,31 @@ part 'app_sizes.dart';
 part 'app_text_styles.dart';
 
 abstract final class AppThemeData {
+  static ListTileThemeData listTileThemeData = const ListTileThemeData(
+    titleTextStyle: AppTextStyles.listTileTitleTextStyle,
+    subtitleTextStyle: AppTextStyles.listTileSubTitleTextStyle,
+    contentPadding: EdgeInsets.symmetric(
+        horizontal: AppSizes.paddingSizeEight,
+        vertical: AppSizes.paddingSizeExtraExtraSmall),
+    visualDensity: VisualDensity(vertical: 4, horizontal: -2),
+  );
+
+  static AppBarTheme appBarTheme = const AppBarTheme(
+      centerTitle: true,
+      elevation: 0,
+      scrolledUnderElevation: 0,
+      actionsIconTheme: IconThemeData(applyTextScaling: true, size: 20),
+      titleTextStyle: AppTextStyles.appBarTextStyle);
 
   static ThemeData lightTheme = ThemeData(
-      colorScheme: ColorScheme.fromSeed(seedColor: AppColors.secondaryColor,brightness: Brightness.light),
-      dividerTheme: const DividerThemeData(
-        color: AppColors.secondaryColor,
-      ),
-      listTileTheme: const ListTileThemeData(
-        titleTextStyle: AppTextStyles.listTileTitleTextStyle,
-        subtitleTextStyle: AppTextStyles.listTileSubTitleTextStyle,
-        contentPadding:
-        EdgeInsets.symmetric(horizontal: AppSizes.paddingSizeEight,vertical: AppSizes.paddingSizeExtraExtraSmall),
-        visualDensity: VisualDensity(vertical: 4, horizontal: -2),
-      ),
-      appBarTheme: const AppBarTheme(
-          centerTitle: true,
-          elevation: 0,
-          scrolledUnderElevation: 0,
-          actionsIconTheme: IconThemeData(
-              color: AppColors.defaultColor, applyTextScaling: true, size: 20),
-          titleTextStyle: AppTextStyles.appBarTextStyle));
+      brightness: Brightness.light,
+      listTileTheme: listTileThemeData,
+      appBarTheme: appBarTheme);
 
   static ThemeData darkTheme = ThemeData(
       brightness: Brightness.dark,
-      colorScheme:  ColorScheme.fromSeed(seedColor: AppColors.defaultColor,brightness: Brightness.dark),
-      dividerTheme: const DividerThemeData(
-        color: AppColors.secondaryColor,
-      ),
-      listTileTheme: const ListTileThemeData(
-        titleTextStyle: AppTextStyles.listTileTitleTextStyle,
-        subtitleTextStyle: AppTextStyles.listTileSubTitleTextStyle,
-        contentPadding:
-        EdgeInsets.symmetric(horizontal: AppSizes.paddingSizeEight,vertical: AppSizes.paddingSizeExtraExtraSmall),
-        visualDensity: VisualDensity(vertical: 4, horizontal: -2),
-      ),
-      appBarTheme: const AppBarTheme(
-          centerTitle: true,
-          elevation: 0,
-          scrolledUnderElevation: 0,
-          actionsIconTheme: IconThemeData(
-              color: AppColors.defaultColor, applyTextScaling: true, size: 20),
-          titleTextStyle: AppTextStyles.appBarTextStyle));
+      listTileTheme: listTileThemeData,
+      appBarTheme: appBarTheme);
 }
 
 final class AppTheme extends ChangeNotifier {
