@@ -30,7 +30,10 @@ class ArticleWidget extends StatelessWidget {
               return SizedBox(
                   width: size.width * 0.35,
                   height: size.width * 0.4,
-                  child: const Placeholder());
+                  child: const Icon(
+                    Icons.error,
+                    color: Colors.red,
+                  ));
             },
             loadingBuilder: (context, child, loadingProgress) {
               if (loadingProgress == null) return child;
