@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
                     textScaler: const TextScaler.linear(1.2),
                   ),
                   child: MaterialApp(
-                    title: 'Asahl Crm',
+                    title: 'News App',
                     debugShowCheckedModeBanner: false,
                     routes: AppRouter.routes,
                     theme: AppThemeData.lightTheme,
